@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">guest_orders_grid.guest_orders_grid_data_source</item>
+            <item name="deps" xsi:type="string">guest_orders_grid.guest_orders_grid_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">dev_grid_category_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string">View All Orders</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">sales/order</item>
+            </item>
+        </item>
+    </argument>
+    <dataSource name="guest_orders_grid_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aashan\LinkGuestOrder\Ui\DataProvider\GuestOrders\DataProvider
+            </argument>
+            <argument name="name" xsi:type="string">guest_orders_grid_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">entity_id</argument>
+            <argument name="requestFieldName" xsi:type="string">entity_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">entity_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="data" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">
+                        guest_orders_grid.guest_orders_grid.dev_grid_category_columns.ids
+                    </item>
+                    <item name="displayArea" xsi:type="string">bottom</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+            <action name="link_to_customer">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">link_to_customer</item>
+                        <item name="label" xsi:type="string" translate="true">Link to Customer by Email</item>
+                        <item name="url" xsi:type="url" path="guestorders/link/link"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Link guest orders to Customer</item>
+                            <item name="message" xsi:type="string" translate="true">
+                                Selected orders will be linked to their respective customers on the basis of the billing
+                                email address.
+                                Orders that don't have customers associated to the billing email address will be
+                                skipped.
+                                Are you sure you want to continue?
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="dev_grid_category_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="increment_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Order#</label>
+            </settings>
+        </column>
+        <column name="store_id" class="Magento\Store\Ui\Component\Listing\Column\Store">
+            <settings>
+                <label translate="true">Purchase Point</label>
+                <bodyTmpl>ui/grid/cells/html</bodyTmpl>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date"
+                component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <label translate="true">Purchase Date</label>
+                <sorting>desc</sorting>
+            </settings>
+        </column>
+        <column name="base_grand_total" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Grand Total (Base)</label>
+            </settings>
+        </column>
+        <column name="grand_total" class="Magento\Sales\Ui\Component\Listing\Column\PurchasedPrice">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Grand Total (Purchased)</label>
+            </settings>
+        </column>
+        <column name="status" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <filter>select</filter>
+                <options class="Magento\Sales\Ui\Component\Listing\Column\Status\Options"/>
+                <dataType>select</dataType>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+        <column name="email">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer Email</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="subtotal" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Subtotal</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="customer_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Customer Name</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="total_refunded" class="Magento\Sales\Ui\Component\Listing\Column\PurchasedPrice">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Total Refunded</label>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Magento\Sales\Ui\Component\Listing\Column\ViewAction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="viewUrlPath" xsi:type="string">sales/order/view</item>
+                    <item name="urlEntityParamName" xsi:type="string">order_id</item>
+                </item>
+            </argument>
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
