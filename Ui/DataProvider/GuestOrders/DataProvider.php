@@ -64,7 +64,7 @@ class DataProvider extends AbstractDataProvider
     {
         $customerTable = $this->collection->getTable('customer_entity');
 
-        $this->collection->getSelect()->join(
+        $this->collection->getSelect()->joinLeft(
             $customerTable . ' as customer',
             'main_table.customer_email = customer.email',
             [
