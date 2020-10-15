@@ -28,7 +28,10 @@ By default, Magento 2 doesn't automatically link the guest orders as customer or
 	- `git pull origin master`
 
 	Once the installation is complete, please follow post installation scripts.
-
+- #### Post Installation
+    Once you have your module installed by one of the above methods, run the following commands to make sure that the module is setup correctly.
+    - `bin/magento setup:upgrade`
+    - `bin/magento cache:clean`
 ### API
 The module provides a simple API for auto linking the orders to their respective customers. 
 The main API is available through `Aashan\LinkGuestOrder\Helper\OrderLinkHelper` helper class. It consists of a method `linkOrderToCustomer` which takes object of `Magento\Sales\Model\Order` class as the only argument.
