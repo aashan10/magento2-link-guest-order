@@ -7,7 +7,7 @@ env:
         - PULSESTORM_MAGE2_ADMIN_FIRST_NAME=Aashan
         - PULSESTORM_MAGE2_ADMIN_LAST_NAME=Ghimire
         - PULSESTORM_MAGE2_ADMIN_USERNAME=admin
-        - PULSESTORM_MAGE2_ADMIN_PASSWORD=testpassword
+        - PULSESTORM_MAGE2_ADMIN_PASSWORD=test_pass@123
         - PULSESTORM_MAGE2_ADMIN_DBNAME=magento_2_link_guest_orders
         - PULSESTORM_PESTLE_URL=http://pestle.pulsestorm.net
         - PULSESTORM_COMPOSER_REPOSITORY_TO_TEST=https://github.com/aashan10/magento2-link-guest-order.git

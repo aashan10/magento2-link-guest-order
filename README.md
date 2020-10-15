@@ -1,6 +1,7 @@
+[![Build Status](https://travis-ci.com/aashan10/magento2-link-guest-order.svg?branch=master)](https://travis-ci.com/aashan10/magento2-link-guest-order)
 ## Link Guest Customer
 
-- [ Overview ](#overview)   
+- [ Overview ](#overview)
 - [ Installation ](#overview) 
   - [ Composer Installation ](#composer-installation)
   - [ Manual Installation ](#manual-installation)
