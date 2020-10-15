@@ -1,0 +1,14 @@
+{
+    "name": "aashan/module-link-guest-orders",
+    "description": "Links guest orders to customer accounts if there is any user account associated with the order email.",
+    "type": "magento2-module",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Aashan\\LinkGuestOrder\\": ""
+        }
+    },
+    "version": "1.0.0"
+}
