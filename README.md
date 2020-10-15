@@ -13,7 +13,7 @@ By default, Magento 2 doesn't automatically link the guest orders as customer or
 
 ### Installation 
 - #### Composer Installation
-	Inside your project root directory, run `composer require aashan/magento2-link-guest-order`. 
+	Inside your project root directory, run `composer require aashan/module-link-guest-orders`. 
 
 	Make sure to run post installation scripts.
 - #### Manual Installation
