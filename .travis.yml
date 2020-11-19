@@ -39,7 +39,7 @@ before_script:
     #- pwd
     #
     # get latest composer
-    - composer selfupdate
+    - composer self-update 1.10.17
     # disable xdebug for perf
     - echo '' > ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini
     # add multiverse support to get MySQL 5.6 update apt
