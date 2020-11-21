@@ -12,6 +12,10 @@
 ### Overview
 By default, Magento 2 doesn't automatically link the guest orders as customer orders if the account with email supplied during the checkout process already exists. That is where this module comes in handy. This module automatically synchronizes the orders on the basis of order email address. You can even sync previously added orders through the admin panel.
 
+![Image](https://i.imgur.com/fkJATvr.png)
+![Image](https://i.imgur.com/c0XHGuQ.png)
+![Image](https://i.imgur.com/lVJrN4V.png)
+
 ### Installation 
 - #### Composer Installation
 	Inside your project root directory, run `composer require aashan/module-link-guest-orders`. 
