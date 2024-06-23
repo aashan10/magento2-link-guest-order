@@ -9,6 +9,5 @@
         "psr-4": {
             "Aashan\\LinkGuestOrder\\": ""
         }
-    },
-    "version" : "1.0.4"
+    }
 }
