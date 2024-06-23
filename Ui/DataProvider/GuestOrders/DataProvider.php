@@ -2,6 +2,7 @@
 
 namespace Aashan\LinkGuestOrder\Ui\DataProvider\GuestOrders;
 
+use Magento\Framework\Api\Filter;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
 use Magento\Store\Model\StoreManagerInterface;
@@ -72,5 +73,19 @@ class DataProvider extends AbstractDataProvider
                 'email' => 'email'
             ]
         );
+    }
+
+    public function addFilter(Filter $filter)
+    {
+        $orderTableFields = [
+            'created_at',
+            'increment_id'
+        ];
+
+        if (in_array($filter->getField(), $orderTableFields)) {
+            $filter->setField(sprintf('main_table.%s', $filter->getField()));
+        }
+
+        parent::addFilter($filter);
     }
 }
